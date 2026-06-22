@@ -1,0 +1,69 @@
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+secrets/
+*.key
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+
+# SQL / local databases / backups
+*.db
+*.sqlite
+*.sqlite3
+*.bak
+*.dump
+*.sql.gz
+*.sql.zip
+
+# Analytics data outputs
+data/raw/*
+data/processed/*
+data/exports/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/exports/.gitkeep
+
+# Power BI temporary and cache files
+*.pbix.tmp
+~*.pbix
+*.pbit.tmp
+.powerbi-cache/
+AnalysisServicesWorkspaces*/
+
+# Power BI exports and generated report artifacts
+powerbi/exports/*
+powerbi/screenshots/*
+!powerbi/exports/.gitkeep
+!powerbi/screenshots/.gitkeep
+
+# Logs and temporary files
+*.log
+logs/
+tmp/
+temp/
+*.tmp
