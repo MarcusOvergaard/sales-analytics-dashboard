@@ -6,16 +6,25 @@ This project is an end-to-end Business Intelligence portfolio project using the 
 
 The goal is to simulate the workflow of a Junior Data Analyst: inspect raw data, design a relational model, write SQL analysis, build a Power BI dashboard, and communicate business findings clearly.
 
-Current status:
-Phase 2 - Documentation Foundation
+## Final Deliverables
 
-No final analysis results have been produced yet.
+This project delivers:
+
+- PostgreSQL star schema design
+- SQL-based data validation framework
+- Business analysis queries
+- Interactive Power BI dashboard
+- Documentation and data modeling artifacts
+
+The project simulates a complete Business Intelligence workflow from raw data ingestion to executive dashboard reporting.
+
+## Project Outcome
+
+The project successfully transformed raw e-commerce transaction data into a dimensional star schema, validated the data model using SQL, and delivered an interactive Power BI dashboard for sales analysis.
 
 ## Business Problem
 
 An e-commerce marketplace needs a clearer view of sales performance across revenue, orders, customers, products, and regions.
-
-The planned dashboard will help stakeholders answer questions such as:
 
 - How is revenue changing over time?
 - Which regions drive the most sales?
@@ -23,11 +32,8 @@ The planned dashboard will help stakeholders answer questions such as:
 - Which customers and sellers contribute most to order activity?
 - Where are delivery delays or review-score problems likely to appear?
 
-Final conclusions and recommendations will be added only after SQL analysis and dashboard development are complete.
+## Dataset
 
-## Dataset Overview
-
-Approved dataset:
 Olist Brazilian E-Commerce Public Dataset
 
 Source:
@@ -50,89 +56,106 @@ Main tables:
 | `geolocation` | ZIP-prefix geography reference data. |
 | `product_category_translation` | Portuguese-to-English product category labels. |
 
-Dataset notes:
-
-- The recommended main reporting grain is one row per order item.
-- Revenue will likely be based on `order_items.price`.
-- Freight should be reported separately using `order_items.freight_value` unless later approved as part of total customer charge.
-- Payment and review tables require careful modeling to avoid double counting.
-- Geolocation data requires cleaning or aggregation before reliable map reporting.
-
-## Planned Analysis
-
-Planned SQL and business analysis areas:
-
-- Revenue by month
-- Revenue by customer region
-- Revenue by product category
-- Revenue by product
-- Order volume over time
-- Average order value
-- Customer geography and repeat purchase indicators
-- Seller performance
-- Freight value analysis
-- Delivery time analysis
-- Late delivery analysis
-- Review score analysis
-
-Placeholder for final findings:
-Final findings will be added after SQL analysis is complete.
-
-Placeholder for business recommendations:
-Business recommendations will be added after dashboard review and insight generation.
-
-## Planned Dashboards
-
-The planned Power BI report will contain five pages:
-
-1. Executive Overview
-   - Revenue
-   - Orders
-   - Customers
-   - Average Order Value
-   - Revenue trend
-   - Revenue by region
-   - Revenue by category
-
-2. Sales Performance
-   - Revenue by month
-   - Revenue by category
-   - Revenue by product
-   - Seller contribution
-   - Freight value context
-
-3. Customer Analysis
-   - Top customers
-   - Customer geography
-   - Repeat purchase indicators
-   - Customer revenue distribution
-
-4. Product Analysis
-   - Category performance
-   - Product performance
-   - Product rankings
-   - Review-score context
-
-5. Operations & Delivery
-   - Delivery time distribution
-   - Delivery performance by region
-   - Review score analysis
-   - Seller delivery performance
-
-Placeholder for dashboard screenshots:
-Dashboard screenshots will be added after Power BI development.
-
 ## Tools Used
 
-Planned tools:
+- PostgreSQL
+- DBeaver
+- Power BI
+- Git / GitHub
+- SQL
+- Markdown Documentation
 
-- SQL for data modeling, cleaning, and analysis
-- Power BI for dashboard creation
-- Git/GitHub for version control
-- Markdown for documentation
-- Python may be used for lightweight data inspection or validation if needed
+## Data Model
 
-No SQL scripts or Power BI files have been created yet.
+Fact Table
+
+- fact_order_items
+
+Dimensions
+
+- dim_customer
+- dim_product
+- dim_seller
+- dim_date
+
+Grain
+
+One row per order item.
+
+## SQL Analysis
+
+Key business analysis queries include:
+
+- Revenue by Month
+- Revenue by Product Category
+- Revenue by Customer State
+- Top Product Categories
+- Top Sellers
+
+The analysis layer demonstrates joins, aggregations, grouping, sorting, dimensional modeling, and business KPI reporting.
+
+The project demonstrates:
+
+- Joins
+- Aggregations
+- GROUP BY analysis
+- Dimensional modeling
+- Data validation
+- Business KPI reporting
+
+## Power BI Dashboard
+
+Dashboard Pages:
+
+## Dashboard Screenshots
+
+![Executive Overview](powerbi/screenshots/executive_overview.png)
+
+### Executive Overview
+
+KPIs:
+
+- Total Revenue
+- Total Orders
+- Items Sold
+- Average Order Value
+
+Visuals:
+
+- Revenue by Month
+- Revenue by Product Category
+- Revenue by Customer State
+- Top Sellers
+- Top Product Categories
+
+Interactive Filters:
+
+- Year
+- Month
+- Customer State
+- Product Category
+
+## Key Findings
+
+- Revenue is concentrated in a small number of product categories.
+- Sales performance varies significantly across Brazilian states.
+- A limited number of sellers contribute a disproportionate share of revenue.
+- Monthly revenue trends reveal seasonality and growth patterns.
+
+## Limitations
+
+- The dataset represents a single Brazilian e-commerce marketplace.
+- Customer demographics are not available.
+- Product-level profitability cannot be analyzed because cost data is unavailable.
+- The project focuses on sales performance and does not include advanced forecasting or predictive analytics.
+
+## Future Improvements
+
+- Incorporate payment and review fact tables into the dimensional model.
+- Add delivery performance and customer satisfaction reporting.
+- Create additional dashboard pages for seller performance and operations.
+- Implement trend forecasting and anomaly detection.
+- Deploy the dashboard using the Power BI Service.
 
 ## Repository Structure
 
@@ -142,18 +165,14 @@ sales-analytics-dashboard/
 ├── LICENSE
 ├── PROJECT_PLAN.md
 ├── data/
-│   ├── raw/
-│   ├── processed/
-│   └── exports/
+│   └── raw/
 ├── sql/
 │   ├── schema/
-│   ├── views/
 │   ├── analysis/
 │   └── validation/
 ├── powerbi/
-│   ├── dashboard_design/
 │   ├── screenshots/
-│   └── exports/
+│   └── sales_analytics_dashboard.pbix
 ├── docs/
 │   ├── project_plan.md
 │   ├── dataset_inventory.md
@@ -164,39 +183,18 @@ sales-analytics-dashboard/
 │   ├── business_questions.md
 │   ├── dashboard_specification.md
 │   └── research_log.md
-└── assets/
-    └── images/
 ```
 
 ## Documentation
 
-Current documentation:
+Additional project documentation can be found in the docs folder:
 
-- `docs/dataset_inventory.md` - raw dataset files, tables, row counts, and column catalog
-- `docs/table_relationships.md` - discovered keys and table relationships
-- `docs/data_quality_report.md` - missing values, duplicates, and quality issues
-- `docs/star_schema_recommendation.md` - documentation-only recommended dimensional model
-- `docs/business_questions.md` - stakeholder questions for later analysis
-- `docs/dashboard_specification.md` - planned Power BI pages, KPIs, visuals, filters, and drill-downs
-- `docs/data_dictionary.md` - foundation data dictionary for reporting fields
-- `docs/research_log.md` - dataset acquisition and inspection notes
-
-## Project Status
-
-Completed:
-
-- Phase 0: Project Initialization
-- Phase 1: Dataset Selection
-- Phase 1.5: Dataset Acquisition & Inspection
-- Phase 2: Documentation Foundation
-
-Not started:
-
-- SQL implementation
-- Database schema creation
-- Data cleaning scripts
-- Power BI dashboard creation
-- Business insight generation
+- Dataset Inventory
+- Data Quality Report
+- Data Dictionary
+- Business Questions
+- Dashboard Specification
+- Research Log
 
 ## License
 
