@@ -57,7 +57,6 @@ AnalysisServicesWorkspaces*/
 
 # Power BI exports and generated report artifacts
 powerbi/exports/*
-powerbi/screenshots/*
 !powerbi/exports/.gitkeep
 !powerbi/screenshots/.gitkeep
 
